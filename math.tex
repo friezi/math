@@ -1,0 +1,53 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym}
+\usepackage[english]{babel}
+\usepackage[a4paper]{geometry}
+\usepackage[sumlimits]{amsmath}
+\usepackage{amssymb}
+\usepackage[nomessages]{fp}
+\usepackage{pst-all}
+\usepackage[labelformat=simple]{caption}
+\usepackage{multido}
+\usepackage[normalem]{ulem}
+
+\parindent0pt
+
+\title{Math}
+\author{Friedemann Zintel}
+\date{\today}
+
+\newcommand{\spc}{\hspace{0.2cm}}
+\newcommand*{\vecdd}[2]{\begin{pmatrix}#1\\#2\\\end{pmatrix}}
+
+\begin{document}
+\section*{Orthogonality and determinant}
+\subsection*{Orthogonality}
+To proove: $\vec{v_1}\perp \vec{v_2} <=> \vec{v_1}*\vec{v_2}=0$ :\\\\
+Be $\vec{v_1}=\vecdd{x_1}{y_1}=|\vec{v_1}|\vecdd{\cos\alpha}{\sin\alpha}$, $\vec{v_2}=\vecdd{x_2}{y_2}=|\vec{v_2}|\vecdd{\cos\beta}{\sin\beta}$
+with $\alpha=\measuredangle\vec{v_1}$, $\beta=\measuredangle\vec{v_2}$
+\\\\\\\\
+$\vec{v_1}*\vec{v_2}
+=|\vec{v_1}|\vecdd{\cos\alpha}{\sin\alpha}|\vec{v_2}|\vecdd{\cos\beta}{\sin\beta}
+=|\vec{v_1}||\vec{v_2}|(\cos\alpha\cos\beta+\sin\alpha\sin\beta)=\uuline{|\vec{v_1}||\vec{v_2}|\cos(\alpha-\beta)}$.
+\\\\\\\\
+Be $\vec{v_1}\perp \vec{v_2} <=> \alpha=\beta+\frac{\pi}{2}$, w.l.o.g.
+\\\\\\\\
+$=>|\vec{v_1}||\vec{v_2}|\cos(\alpha-\beta)=|\vec{v_1}||\vec{v_2}|\cos(\beta+\frac{\pi}{2}-\beta)=0$
+\\\\$\square$
+\subsection*{Determinant}
+Let's choose $sin()$ instead of $\cos()$:
+\\\\
+$|\vec{v_1}||\vec{v_2}|\sin(\alpha-\beta)=|\vec{v_1}||\vec{v_2}|(\sin\alpha\cos\beta-\cos\alpha\sin\beta)$
+\\\\
+$=|\vec{v_1}||\vec{v_2}|\vecdd{\sin\alpha}{\cos\alpha}\vecdd{\cos\beta}{-\sin\beta}$
+$=\vecdd{|\vec{v_1}|\sin\alpha}{|\vec{v_1}|\cos\alpha}\vecdd{|\vec{v_2}|\cos\beta}{-|\vec{v_2}|\sin\beta}=\vecdd{y_1}{x_1}\vecdd{x_2}{-y_2}$
+\\\\
+$=\det\left(\begin{array}{ll}x_2&x_1\\y_2&y_1\\\end{array}\right)=\uuline{\det\left(\begin{array}{ll}\vec{v_2}&\vec{v_1}\\\end{array}\right)}.$
+\\\\\\
+If $\alpha=\beta+k*\pi$, w.l.o.g, $k\in\mathbb{N}$
+\\\\
+$=> \det\left(\begin{array}{ll}\vec{v_2}&\vec{v_1}\\\end{array}\right)=|\vec{v_1}||\vec{v_2}|\sin(\alpha-\beta)=|\vec{v_1}||\vec{v_2}|\sin(\beta+k*\pi-\beta)=0$
+\\\\
+$=> \vec{v_1}$ and $\vec{v_2}$ are linear dependant and the determinant in general determines linear dependency.
+\end{document}
