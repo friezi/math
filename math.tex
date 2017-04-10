@@ -32,11 +32,11 @@ $\vec{v_1}*\vec{v_2}
 =|\vec{v_1}||\vec{v_2}|(\cos\alpha\cos\beta+\sin\alpha\sin\beta)=\uuline{|\vec{v_1}||\vec{v_2}|\cos(\alpha-\beta)}$.
 \\\\\\\\
 Be $\vec{v_1}\perp \vec{v_2} <=> \alpha=\beta+\frac{\pi}{2}$, w.l.o.g.
-\\\\\\\\
+\\\\
 $=>|\vec{v_1}||\vec{v_2}|\cos(\alpha-\beta)=|\vec{v_1}||\vec{v_2}|\cos(\beta+\frac{\pi}{2}-\beta)=0$
 \\\\$\square$
 \subsection*{Determinant}
-Let's choose $sin()$ instead of $\cos()$:
+Let's choose $\sin()$ instead of $\cos()$ in the above equation:
 \\\\
 $|\vec{v_1}||\vec{v_2}|\sin(\alpha-\beta)=|\vec{v_1}||\vec{v_2}|(\sin\alpha\cos\beta-\cos\alpha\sin\beta)$
 \\\\
@@ -49,5 +49,25 @@ If $\alpha=\beta+k*\pi$, w.l.o.g, $k\in\mathbb{N}$
 \\\\
 $=> \det\left(\begin{array}{ll}\vec{v_2}&\vec{v_1}\\\end{array}\right)=|\vec{v_1}||\vec{v_2}|\sin(\alpha-\beta)=|\vec{v_1}||\vec{v_2}|\sin(\beta+k*\pi-\beta)=0$
 \\\\
-$=> \vec{v_1}$ and $\vec{v_2}$ are linear dependant and the determinant in general determines linear dependency.
+$=> \vec{v_1}$ and $\vec{v_2}$ are linear dependent and the determinant in general determines linear dependency.
+\newpage
+\section*{Proof polynomial derivation}
+To proove: $(x^n)' = nx^{n-1}$
+\\\\\\\\
+\begin{align}
+\frac{f(x+\vartriangle x)-f(x)}{\vartriangle x}=\frac{(x+\vartriangle x)^n-x^n}{\vartriangle x}
+=\frac{\sum_{k=0}^{n}{n \choose k }(x^{n-k}\vartriangle x^k)-x^n}{\vartriangle x}
+\\
+=\frac{x^n\Delta x^0+\sum_{k=1}^{n}{n \choose k}(x^{n-k}\Delta x^k)-x^n}{\Delta x}=\frac{\sum_{k=1}^{n}{n \choose k}(x^{n-k}\Delta x^k)}{\Delta x}
+\\
+=\frac{\Delta x\sum_{k-1}^{n}{n \choose k}(x^{n-k}\Delta x^{k-1})}{\Delta x}=\sum_{k-1}^{n}{n \choose k}(x^{n-k}\Delta x^{k-1})
+\\
+=\sum_{k=1}^{n}\frac{n!}{k!(n-k)!}(x^{n-k}\Delta x^{k-1})
+\\
+=nx^{n-1}+\sum_{k=2}^{n}{n \choose k}(x^{n-k}\Delta x^k)
+\\
+\lim_{\Delta x \to 0}(nx^{n-1}+\sum_{k=2}^{n}{n \choose k}(x^{n-k}\Delta x^k)) = nx^{n-1}
+\end{align}
+\\\\
+$\square$
 \end{document}
