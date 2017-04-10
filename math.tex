@@ -51,23 +51,48 @@ $=> \det\left(\begin{array}{ll}\vec{v_2}&\vec{v_1}\\\end{array}\right)=|\vec{v_1
 \\\\
 $=> \vec{v_1}$ and $\vec{v_2}$ are linear dependent and the determinant in general determines linear dependency.
 \newpage
-\section*{Proof polynomial derivation}
+\section*{Polynomial derivation}
 To proove: $(x^n)' = nx^{n-1}$
-\\\\\\\\
-\begin{align}
-\frac{f(x+\vartriangle x)-f(x)}{\vartriangle x}=\frac{(x+\vartriangle x)^n-x^n}{\vartriangle x}
+\\\\\\
+\begin{align*}
+\frac{f(x+\vartriangle x)-f(x)}{\vartriangle x}
+\\\\
+=\frac{(x+\vartriangle x)^n-x^n}{\vartriangle x}
+\\\\
 =\frac{\sum_{k=0}^{n}{n \choose k }(x^{n-k}\vartriangle x^k)-x^n}{\vartriangle x}
+\\\\
+=\frac{x^n\Delta x^0+\sum_{k=1}^{n}{n \choose k}(x^{n-k}\Delta x^k)-x^n}{\Delta x}
+\\\\
+=\frac{\sum_{k=1}^{n}{n \choose k}(x^{n-k}\Delta x^k)}{\Delta x}
+\\\\
+=\frac{\Delta x\sum_{k-1}^{n}{n \choose k}(x^{n-k}\Delta x^{k-1})}{\Delta x}
 \\
-=\frac{x^n\Delta x^0+\sum_{k=1}^{n}{n \choose k}(x^{n-k}\Delta x^k)-x^n}{\Delta x}=\frac{\sum_{k=1}^{n}{n \choose k}(x^{n-k}\Delta x^k)}{\Delta x}
-\\
-=\frac{\Delta x\sum_{k-1}^{n}{n \choose k}(x^{n-k}\Delta x^{k-1})}{\Delta x}=\sum_{k-1}^{n}{n \choose k}(x^{n-k}\Delta x^{k-1})
-\\
+=\sum_{k-1}^{n}{n \choose k}(x^{n-k}\Delta x^{k-1})
+\\\\
 =\sum_{k=1}^{n}\frac{n!}{k!(n-k)!}(x^{n-k}\Delta x^{k-1})
-\\
+\\\\
 =nx^{n-1}+\sum_{k=2}^{n}{n \choose k}(x^{n-k}\Delta x^k)
-\\
+\\\\
 \lim_{\Delta x \to 0}(nx^{n-1}+\sum_{k=2}^{n}{n \choose k}(x^{n-k}\Delta x^k)) = nx^{n-1}
-\end{align}
+\end{align*}
 \\\\
 $\square$
+\newpage
+\section*{Binomial theorem}
+To proof: $(x+y)^n=\sum_{k=0}^{n}{n \choose k}(x^{n-k}y^k)$
+\\\\\\
+Induction:\\\\
+$n=0$:\\\\
+\begin{align*}
+(x+y)^0=1=\sum_{k=0}^{0}{0 \choose k}(x^{0-k}y^k)
+\end{align*}
+\\\\\\
+$n \to n+1$:\\\\
+\begin{align*}
+(x+y)^{n+1}=(x+y)^n(x+y)\stackrel{\textnormal{i.p.}}{=}\sum_{k=0}^{n}{n \choose k}(x^{n-k}y^{k})(x+y)
+\\\\
+=\sum_{k=0}^{n}{n \choose k}(x^{n+1-k}y^k)+\sum_{k=0}^{n}{n \choose k}(x^{n-k}y^{k+1})
+\\\\
+=\sum_{k=0}^{n}{n \choose k}(x^{n+1-k}y^k)+\sum_{k=1}^{n+1}{n \choose k-1}(x^{n+1-k}y^{k})
+\end{align*}
 \end{document}
