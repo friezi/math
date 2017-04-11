@@ -21,7 +21,9 @@
 \newcommand*{\vecdd}[2]{\begin{pmatrix}#1\\#2\\\end{pmatrix}}
 
 \begin{document}
-\section*{Orthogonality and determinant}
+\tableofcontents
+\newpage
+\section{Orthogonality and determinant}
 \subsection*{Orthogonality}
 To proove: $\vec{v_1}\perp \vec{v_2} <=> \vec{v_1}*\vec{v_2}=0$ :\\\\
 Be $\vec{v_1}=\vecdd{x_1}{y_1}=|\vec{v_1}|\vecdd{\cos\alpha}{\sin\alpha}$, $\vec{v_2}=\vecdd{x_2}{y_2}=|\vec{v_2}|\vecdd{\cos\beta}{\sin\beta}$
@@ -51,7 +53,7 @@ $=> \det\left(\begin{array}{ll}\vec{v_2}&\vec{v_1}\\\end{array}\right)=|\vec{v_1
 \\\\
 $=> \vec{v_1}$ and $\vec{v_2}$ are linear dependent and the determinant in general determines linear dependency.
 \newpage
-\section*{Polynomial derivation}
+\section{Polynomial derivation}
 To proove: $(x^n)' = nx^{n-1}$
 \\\\\\
 \begin{align*}
@@ -78,21 +80,50 @@ To proove: $(x^n)' = nx^{n-1}$
 \\\\
 $\square$
 \newpage
-\section*{Binomial theorem}
+\section{Binomial theorem}
 To proof: $(x+y)^n=\sum_{k=0}^{n}{n \choose k}(x^{n-k}y^k)$
-\\\\\\
-Induction:\\\\
-$n=0$:\\\\
+\\\\
+Induction:\\
+$n=0$:
 \begin{align*}
 (x+y)^0=1=\sum_{k=0}^{0}{0 \choose k}(x^{0-k}y^k)
 \end{align*}
-\\\\\\
-$n \to n+1$:\\\\
+$n \to n+1$:
 \begin{align*}
 (x+y)^{n+1}=(x+y)^n(x+y)\stackrel{\textnormal{i.p.}}{=}\sum_{k=0}^{n}{n \choose k}(x^{n-k}y^{k})(x+y)
 \\\\
 =\sum_{k=0}^{n}{n \choose k}(x^{n+1-k}y^k)+\sum_{k=0}^{n}{n \choose k}(x^{n-k}y^{k+1})
 \\\\
 =\sum_{k=0}^{n}{n \choose k}(x^{n+1-k}y^k)+\sum_{k=1}^{n+1}{n \choose k-1}(x^{n+1-k}y^{k})
+\\\\
+={n \choose 0}x^{n+1}y^0+\sum_{k=1}^{n}{n \choose k}(x^{n+1-k}y^k)+{n \choose n}x^0y^{n+1}+\sum_{k=1}^{n}{n \choose k-1}(x^{n+1-k}y^k)
+\\\\
+={n+1 \choose 0}x^{n+1}y^0+\sum_{k=1}^{n}{n \choose k}(x^{n+1-k}y^k)+{n+1 \choose n+1}x^0y^{n+1}+\sum_{k=1}^{n}{n \choose k-1}(x^{n+1-k}y^k)
+\\\\
+={n+1 \choose 0}x^{n+1}y^0+\sum_{k=1}^{n}{n \choose k-1}(x^{n+1-k}y^k)+\sum_{k=1}^{n}{n \choose k}(x^{n+1-k}y^k)+{n+1 \choose n+1}x^0y^{n+1}
+\\\\
+={n+1 \choose 0}x^{n+1}y^0+\sum_{k=1}^{n}\left({n \choose k-1}+{n \choose k}\right)^*(x^{n+1-k}y^k)+{n+1 \choose n+1}x^0y^{n+1}
+\\\\
+={n+1 \choose 0}x^{n+1}y^0+\sum_{k=1}^{n}{n+1 \choose k}(x^{n+1-k}y^k)+{n+1 \choose n+1}x^0y^{n+1}
+\\\\
+=\sum_{k=0}^{n+1}{n+1 \choose k}(x^{n+1-k}y^k)
+\end{align*}
+\\\\
+$\square$
+\newpage
+\begin{align*}
+^*
+\\
+{n \choose k-1}+{n \choose k}=\frac{n!}{(k-1)!(n-k+1)!}+\frac{n!}{k!(n-k)!}
+\\\\
+=\frac{n!k}{k!(n-k+1)!}+\frac{n!(n-k+1)}{k!(n-k+1)!}
+\\\\
+=\frac{n!k+n!(n-k+1)}{k!(n+1-k)!}
+\\\\
+=\frac{n!(k+n+1-k)}{k!(n+1-k)!}
+\\\\
+=\frac{(n+1)!}{k!(n+1-k)!}
+\\\\
+=\uuline{{n+1 \choose k}}
 \end{align*}
 \end{document}
