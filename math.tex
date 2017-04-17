@@ -139,35 +139,57 @@ S=\sum_{i=1}^{n}(y_i-(mx_i+b))^2=\sum_{i=1}^{n}(y_i-mx_i-b)^2
 \\\\
 set $\frac{\partial S}{\partial m}=0$ :
 \begin{align*}
-\frac{\partial S}{\partial m}=-2\sum_{i=0}^{n}(y_i-mx_i-b)x_i=0
+\frac{\partial S}{\partial m}=-2\sum_{i=1}^{n}(y_i-mx_i-b)x_i=0
 \\\\
-\Longleftrightarrow \quad 0=\sum_{i=0}^{n}(y_i-mx_i-b)x_i=\sum_{i=0}^{n}(x_iy_i-mx_ix_i-bx_i)
+\Longleftrightarrow \quad 0=\sum_{i=1}^{n}(y_i-mx_i-b)x_i=\sum_{i=1}^{n}(x_iy_i-mx_ix_i-bx_i)
 \\\\
-=\sum_{i=0}^{n}x_iy_i-m\sum_{i=0}^{n}x_ix_i-b\sum_{i=0}^{n}x_i \quad \textbf{: \rm I}
+=\sum_{i=1}^{n}x_iy_i-m\sum_{i=1}^{n}x_ix_i-b\sum_{i=1}^{n}x_i \quad \textbf{: \rm I}
 \end{align*}
 \\\\
 set $\frac{\partial S}{\partial b}=0$ :
 \begin{align*}
-\frac{\partial S}{\partial b}=-2\sum_{i=0}^{n}(y_i-mx_i-b)=0
+\frac{\partial S}{\partial b}=-2\sum_{i=1}^{n}(y_i-mx_i-b)=0
 \\\\
-\Longleftrightarrow \quad 0=\sum_{i=0}^{n}(y_i-mx_i-b)=\sum_{i=0}^{n}(y_i-mx_i-b)=\sum_{i=0}^{n}y_i-m\sum_{i=0}^{n}x_i-nb
+\Longleftrightarrow \quad 0=\sum_{i=1}^{n}(y_i-mx_i-b)=\sum_{i=1}^{n}(y_i-mx_i-b)=\sum_{i=1}^{n}y_i-m\sum_{i=1}^{n}x_i-nb
 \\\\
-\Longleftrightarrow \quad b=\frac{1}{n}\sum_{i=0}^{n}y_i-m\frac{1}{n}\sum_{i=0}^{n}x_i=y_M-mx_M \quad \textbf{: \rm II}
+\Longleftrightarrow \quad b=\frac{1}{n}\sum_{i=1}^{n}y_i-m\frac{1}{n}\sum_{i=1}^{n}x_i=\uuline{y_M-mx_M} \quad \textbf{: \rm II}
 \end{align*}
 \rm{II} in \rm{I}:
 \begin{align*}
-0=\sum_{i=0}^{n}x_iy_i-m\sum_{i=0}^{n}x_ix_i-b\sum_{i=0}^{n}x_i=\sum_{i=0}^{n}x_iy_i-m\sum_{i=0}^{n}x_ix_i-(y_M-mx_M)\sum_{i=0}^{n}x_i
+0=\sum_{i=1}^{n}x_iy_i-m\sum_{i=1}^{n}x_ix_i-b\sum_{i=1}^{n}x_i=\sum_{i=1}^{n}x_iy_i-m\sum_{i=1}^{n}x_ix_i-(y_M-mx_M)\sum_{i=1}^{n}x_i
 \\\\
-=\sum_{i=0}^{n}x_iy_i-m\sum_{i=0}^{n}x_ix_i-y_M\sum_{i=0}^{n}x_i+mx_M\sum_{i=0}^{n}x_i
+=\sum_{i=1}^{n}x_iy_i-m\sum_{i=1}^{n}x_ix_i-y_M\sum_{i=1}^{n}x_i+mx_M\sum_{i=1}^{n}x_i
 \\\\
-\Longleftrightarrow \quad m\left(\sum_{i=0}^{n}x_ix_i-x_M\sum_{i=0}^{n}x_i\right)=\sum_{i=0}^{n}x_iy_i-y_M\sum_{i=0}^{n}x_i
+\Longleftrightarrow \quad m\left(\sum_{i=1}^{n}x_ix_i-x_M\sum_{i=1}^{n}x_i\right)=\sum_{i=1}^{n}x_iy_i-y_M\sum_{i=1}^{n}x_i
 \\\\
-\Longleftrightarrow \quad m=\frac{\sum_{i=0}^{n}x_iy_i-y_M\sum_{i=0}^{n}x_i}{\sum_{i=0}^{n}x_ix_i-x_M\sum_{i=0}^{n}x_i}
+\Longleftrightarrow \quad m=\frac{\sum_{i=1}^{n}x_iy_i-y_M\sum_{i=1}^{n}x_i}{\sum_{i=1}^{n}x_ix_i-x_M\sum_{i=1}^{n}x_i}
 \\\\
-=\frac{\frac{1}{n}\sum_{i=0}^{n}x_iy_i-y_Mx_M}{\frac{1}{n}\sum_{i=0}^{n}x_ix_i-x_Mx_M}
+=\frac{\frac{1}{n}\sum_{i=1}^{n}x_iy_i-x_My_M}{\frac{1}{n}\sum_{i=1}^{n}x_ix_i-x_Mx_M}
 \\\\
-=^*\frac{CoVar(x,y)}{Var(x)}
+=^*\uuline{\frac{Cov(x,y)}{Var(x)}}
+\\\\\\\\
+\Longrightarrow y=mx+n
+\\\\
+=\frac{Cov(x,y)}{Var(x)}x+(y_M-\frac{Cov(x,y)}{Var(x)}x_M)
+\\\\
+=\uuline{\frac{Cov(x,y)}{Var(x)}(x-x_M)+y_M}
 \end{align*}
+\newpage
+\begin{align*}
+^*
 \\\\
-$\square$
+Cov(x,y):=\frac{1}{n}\sum_{i=1}^{n}(x_i-x_M)(y_i-y_M)
+\\
+Var(x):=\frac{1}{n}\sum_{i=1}^{n}(x_i-x_M)^2=Cov(x,x)
+\\\\
+Cov(x,y):=\frac{1}{n}\sum_{i=1}^{n}(x_i-x_M)(y_i-y_M)
+\\\\
+=\frac{1}{n}\sum_{i=1}^{n}(x_iy_i-x_iy_M-x_My_i+x_My_M)
+\\\\
+=\frac{1}{n}\left(\sum_{i=1}^{n}x_iy_i-y_M\sum_{i=1}^{n}x_i-x_M\sum_{i=1}^{n}y_i+nx_My_M\right)
+\\\\
+=\frac{1}{n}\sum_{i=1}^{n}x_iy_i-y_Mx_M-x_My_M+x_My_M
+\\\\
+=\uuline{\frac{1}{n}\sum_{i=1}^{n}x_iy_i-x_My_M}
+\end{align*}
 \end{document}
