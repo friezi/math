@@ -102,7 +102,7 @@ $n \to n+1$:
 \\\\
 ={n+1 \choose 0}x^{n+1}y^0+\sum_{k=1}^{n}{n \choose k-1}(x^{n+1-k}y^k)+\sum_{k=1}^{n}{n \choose k}(x^{n+1-k}y^k)+{n+1 \choose n+1}x^0y^{n+1}
 \\\\
-={n+1 \choose 0}x^{n+1}y^0+\sum_{k=1}^{n}\left({n \choose k-1}+{n \choose k}\right)^*(x^{n+1-k}y^k)+{n+1 \choose n+1}x^0y^{n+1}
+=^*{n+1 \choose 0}x^{n+1}y^0+\sum_{k=1}^{n}\left({n \choose k-1}+{n \choose k}\right)(x^{n+1-k}y^k)+{n+1 \choose n+1}x^0y^{n+1}
 \\\\
 ={n+1 \choose 0}x^{n+1}y^0+\sum_{k=1}^{n}{n+1 \choose k}(x^{n+1-k}y^k)+{n+1 \choose n+1}x^0y^{n+1}
 \\\\
@@ -126,4 +126,48 @@ $\square$
 \\\\
 =\uuline{{n+1 \choose k}}
 \end{align*}
+\newpage
+\section{Linear regression}
+measured values $x_i,y_i$ $|$ $1<=i<=n, n\in \mathbb{N}$
+\\\\
+regression line: $y=mx+b$\\
+minimize error by calculating least squares
+\\\\
+\begin{align*}
+S=\sum_{i=1}^{n}(y_i-(mx_i+b))^2=\sum_{i=1}^{n}(y_i-mx_i-b)^2
+\end{align*}
+\\\\
+set $\frac{\partial S}{\partial m}=0$ :
+\begin{align*}
+\frac{\partial S}{\partial m}=-2\sum_{i=0}^{n}(y_i-mx_i-b)x_i=0
+\\\\
+\Longleftrightarrow \quad 0=\sum_{i=0}^{n}(y_i-mx_i-b)x_i=\sum_{i=0}^{n}(x_iy_i-mx_ix_i-bx_i)
+\\\\
+=\sum_{i=0}^{n}x_iy_i-m\sum_{i=0}^{n}x_ix_i-b\sum_{i=0}^{n}x_i \quad \textbf{: \rm I}
+\end{align*}
+\\\\
+set $\frac{\partial S}{\partial b}=0$ :
+\begin{align*}
+\frac{\partial S}{\partial b}=-2\sum_{i=0}^{n}(y_i-mx_i-b)=0
+\\\\
+\Longleftrightarrow \quad 0=\sum_{i=0}^{n}(y_i-mx_i-b)=\sum_{i=0}^{n}(y_i-mx_i-b)=\sum_{i=0}^{n}y_i-m\sum_{i=0}^{n}x_i-nb
+\\\\
+\Longleftrightarrow \quad b=\frac{1}{n}\sum_{i=0}^{n}y_i-m\frac{1}{n}\sum_{i=0}^{n}x_i=y_M-mx_M \quad \textbf{: \rm II}
+\end{align*}
+\rm{II} in \rm{I}:
+\begin{align*}
+0=\sum_{i=0}^{n}x_iy_i-m\sum_{i=0}^{n}x_ix_i-b\sum_{i=0}^{n}x_i=\sum_{i=0}^{n}x_iy_i-m\sum_{i=0}^{n}x_ix_i-(y_M-mx_M)\sum_{i=0}^{n}x_i
+\\\\
+=\sum_{i=0}^{n}x_iy_i-m\sum_{i=0}^{n}x_ix_i-y_M\sum_{i=0}^{n}x_i+mx_M\sum_{i=0}^{n}x_i
+\\\\
+\Longleftrightarrow \quad m\left(\sum_{i=0}^{n}x_ix_i-x_M\sum_{i=0}^{n}x_i\right)=\sum_{i=0}^{n}x_iy_i-y_M\sum_{i=0}^{n}x_i
+\\\\
+\Longleftrightarrow \quad m=\frac{\sum_{i=0}^{n}x_iy_i-y_M\sum_{i=0}^{n}x_i}{\sum_{i=0}^{n}x_ix_i-x_M\sum_{i=0}^{n}x_i}
+\\\\
+=\frac{\frac{1}{n}\sum_{i=0}^{n}x_iy_i-y_Mx_M}{\frac{1}{n}\sum_{i=0}^{n}x_ix_i-x_Mx_M}
+\\\\
+=^*\frac{CoVar(x,y)}{Var(x)}
+\end{align*}
+\\\\
+$\square$
 \end{document}
