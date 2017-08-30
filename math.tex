@@ -53,6 +53,36 @@ $=> \det\left(\begin{array}{ll}\vec{v_2}&\vec{v_1}\\\end{array}\right)=|\vec{v_1
 \\\\
 $=> \vec{v_1}$ and $\vec{v_2}$ are linear dependent and the determinant in general determines linear dependency.
 \newpage
+\section{Law of cosines}
+To proove: $c^2 = a^2+b^2-2ab\cos\gamma$
+\\\\\\
+$\gamma>=\frac{\pi}{2}:$
+\begin{align}
+d^2=b^2-e^2\\
+e=b\sin(\pi-\gamma)\\
+1=\sin^2\gamma+\cos^2\gamma
+\end{align}
+\\\\
+\begin{align*}
+c^2 = (a+d)^2+e^2
+\\\\
+=(a+\sqrt{b^2-e^2})^2+e^2
+\\\\
+=a^2+2a\sqrt{b^2-e^2}+b^2
+\\\\
+=a^2+2a\sqrt{b^2-b^2\sin^2(\pi-\gamma)}+b^2
+\\\\
+=a^2+2ab\sqrt{1-\sin^2(\pi-\gamma)}+b^2
+\\\\
+=a^2+2ab\sqrt{\cos^2(\pi-\gamma)}+b^2
+\\\\
+=a^2+b^2+2ab\cos(\pi-\gamma)
+\\\\
+=a^2+b^2-2ab\cos\gamma
+\end{align*}
+\\\\
+$\square$
+\newpage
 \section{Polynomial derivation}
 To proove: $(x^n)' = nx^{n-1}$
 \\\\\\
