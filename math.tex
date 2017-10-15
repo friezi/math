@@ -222,4 +222,27 @@ Cov(x,y):=\frac{1}{n}\sum_{i=1}^{n}(x_i-x_M)(y_i-y_M)
 \\\\
 =\uuline{\frac{1}{n}\sum_{i=1}^{n}x_iy_i-x_My_M}
 \end{align*}
+\newpage
+\section{linear interpolation of discrete vector field}
+Be $\vec{g}:\mathbb{Z}^n\rightarrow\mathbb{R}^m$\\\\
+We define $\vec{f}:\mathbb{R}^n\rightarrow\mathbb{R}^m$ as:\\\\
+\begin{align*}
+  \vec{f}(\vec{v}):=\sum_{p\in\mathcal{P}(dim)}^{}\prod_{i=1}^{n}\left((1-d_{v_i})^{1-\delta_p(i)}d_{v_i}^{\delta_p(i)}\right)\vec{g}(\vec{v}_p)
+\end{align*}
+With
+\begin{align*}
+  dim:=\{x \mid 1\leq x\leq n\},\quad p\in\mathcal{P}(dim)\\\\
+  \delta_p:\mathbb{N}\rightarrow\{0,1\}\\
+  \delta_p(x):=
+  \begin{cases}
+    1&x\in p\\
+    0&x\not\in p
+  \end{cases}\\\\
+  \vec{v}_p:v_{p_i}:=
+  \begin{cases}
+    \lceil v_i\rceil&i\in p\\
+    \lfloor v_i\rfloor&i\not\in p
+  \end{cases}\\\\
+  \vec{d}_{\vec{v}}:=\vec{v}-\vec{v}_{\emptyset}
+\end{align*}
 \end{document}

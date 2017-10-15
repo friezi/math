@@ -11,7 +11,7 @@ pdf: ps
 all: pdf clean
 
 clean:
-	rm -f *.aux *.dvi *.log *.ps *~
+	rm -f *.aux *.dvi *.toc *.log *.ps *~
 
 show: ps
 	gv $(PROJECT).ps
