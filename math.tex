@@ -23,12 +23,13 @@
 \begin{document}
 \tableofcontents
 \newpage
+\part{Proofs}
 \section{Orthogonality and determinant}
-\subsection*{Orthogonality}
-To proove: $\vec{v_1}\perp \vec{v_2} <=> \vec{v_1}*\vec{v_2}=0$ :\\\\
 Be $\vec{v_1}=\vecdd{x_1}{y_1}=|\vec{v_1}|\vecdd{\cos\alpha}{\sin\alpha}$, $\vec{v_2}=\vecdd{x_2}{y_2}=|\vec{v_2}|\vecdd{\cos\beta}{\sin\beta}$
 with $\alpha=\measuredangle\vec{v_1}$, $\beta=\measuredangle\vec{v_2}$
 \\\\\\\\
+\subsection*{Orthogonality}
+To proove: $\vec{v_1}\perp \vec{v_2} <=> \vec{v_1}*\vec{v_2}=0$ :\\\\
 $\vec{v_1}*\vec{v_2}
 =|\vec{v_1}|\vecdd{\cos\alpha}{\sin\alpha}|\vec{v_2}|\vecdd{\cos\beta}{\sin\beta}
 =|\vec{v_1}||\vec{v_2}|(\cos\alpha\cos\beta+\sin\alpha\sin\beta)=\uuline{|\vec{v_1}||\vec{v_2}|\cos(\alpha-\beta)}$.
@@ -223,15 +224,16 @@ Cov(x,y):=\frac{1}{n}\sum_{i=1}^{n}(x_i-x_M)(y_i-y_M)
 =\uuline{\frac{1}{n}\sum_{i=1}^{n}x_iy_i-x_My_M}
 \end{align*}
 \newpage
+\part{Computation}
 \section{linear interpolation of discrete vector field}
 Be $\vec{g}:\mathbb{Z}^n\rightarrow\mathbb{R}^m$\\\\
 We define $\vec{f}:\mathbb{R}^n\rightarrow\mathbb{R}^m$ as:\\\\
 \begin{align*}
-  \vec{f}(\vec{v}):=\sum_{p\in\mathcal{P}(dim)}^{}\prod_{i=1}^{n}\left((1-d_{v_i})^{1-\delta_p(i)}d_{v_i}^{\delta_p(i)}\right)\vec{g}(\vec{v}_p)
+  \vec{f}(\vec{v}):=\sum_{p\in\mathcal{P}(S)}^{}\prod_{i=1}^{n}\left((1-d_{v_i})^{1-\delta_p(i)}d_{v_i}^{\delta_p(i)}\right)\vec{g}(\vec{v}_p)
 \end{align*}
 with
 \begin{align*}
-  dim:=\{x\in\mathbb{N} \mid 1\leq x\leq n\},\quad p\in\mathcal{P}(dim)\\\\
+  S:=\{x\in\mathbb{N} \mid 1\leq x\leq n\},\quad p\in\mathcal{P}(S)\\\\
   \delta_p:\mathbb{N}\rightarrow\{0,1\}\\
   \delta_p(x):=
   \begin{cases}
@@ -249,7 +251,135 @@ with
 \\\\\\
 Example: $n=2,\quad x,y\in\mathbb{Z},\quad d_x,d_y\in \{z\in\mathbb{R}\mid 0\leq z<1\}$\\\\
 \begin{align*}
-  \vec{f}(\vec{v})=\vec{f}(\vec{v_{\emptyset}}+\vec{d}_{\vec{v}})=...\\
+  \vec{f}(\vec{v})=\vec{f}(\vec{v_{\emptyset}}+\vec{d}_{\vec{v}})=\vec{f}(\vecdd{\lfloor v_1\rfloor}{\lfloor v_2 \rfloor}+\vecdd{d_x}{d_y})\\
   =(1-d_x)(1-d_y)\vec{g}(\vec{v}_{\emptyset})+(1-d_y)d_x\vec{g}(\vec{v}_{\{1\}})+(1-d_x)d_y\vec{g}(\vec{v}_{\{2\}})+d_xd_y\vec{g}(\vec{v}_{\{1,2\}})
 \end{align*}
+\newpage
+\section{partial velocity vector}
+In order to calculate the momentum between two colliding masses it is necessary to determine the partial velocity vector of a moving mass in direction to the second mass.
+Let's assume a mass $m_1$ moves with velocity $\vec{v}$ and would hit mass $m_2$. For simplicity $m_2$ remains stationary and the shapes of both masses are spherical.
+Even when the direction of $\vec{v}$ does not point directly to $m_2$, it behaves as if $m_1$ hits $m_2$ with a (partial) velocity $\vec{v_{m_2}}$ which points to the
+direction of $m_2$. The calculation holds for any dimension.
+
+\begin{center}
+\psset{xunit=1pt,yunit=1pt,runit=1pt}
+\begin{pspicture}(0,150)(600,350)
+  \newcommand{\msx}{150}
+  \newcommand{\msy}{254}
+  \newcommand{\bradius}{30}
+  \newcommand{\cradius}{2}
+  \newcommand{\mtx}{199}
+  \newcommand{\mty}{220}
+  \newcommand{\vlen}{273}
+  \FPeval{\rsy}{clip(\msy+\bradius)}
+  \FPeval{\rty}{clip(\mty+\bradius)}
+  \FPeval{\lrsy}{clip(\msy+\bradius/2)}
+  \FPeval{\lrty}{clip(\mty+\bradius/2)}
+  \FPeval{\mvlsx}{clip(\msx-75)}
+  \FPeval{\mvlsy}{clip(\msy)}
+  \FPeval{\mvltx}{clip(\mtx+140)}
+  \FPeval{\mvlty}{clip(\msy)}
+  \FPeval{\mmlsx}{clip(\msx-75)}
+  \FPeval{\mmlsy}{clip(\msy+51)}
+  \FPeval{\mmltx}{clip(\mtx+75)}
+  \FPeval{\mmlty}{clip(\mty-51)}
+  \FPeval{\vx}{clip(\msx+(\vlen-\msx)/2)}
+  \FPeval{\vmsy}{clip(\msy+3)}
+  \FPeval{\vmty}{clip(\mty-25+3)}
+  \FPeval{\vmtx}{clip(\mtx+35+3)}
+  \FPeval{\mxra}{clip(\vmtx-2)}
+  \FPeval{\myra}{clip(\vmty+7)}
+  \FPeval{\dx}{clip(\msx+(\mtx-\msx)/2)}
+  \FPeval{\dy}{clip(\mty+(\msy-\mty)/2)}
+  \FPeval{\sx}{clip(\vmtx+(\vlen-\vmtx)/2)}
+  \FPeval{\sy}{clip(\vmty+(\msy-\vmty)/2)}
+
+  % m1
+  \pscircle(\msx,\msy){\bradius}
+  \pscircle*(\msx,\msy){\cradius}
+  \uput[dl](\msx,\msy){$m_1$}
+  \psline[]{-}(\msx,\msy)(\msx,\rsy)
+  \uput[r](\msx,\lrsy){$r_1$}
+
+  %m2
+  \pscircle(\mtx,\mty){\bradius}
+  \pscircle*(\mtx,\mty){\cradius}
+  \uput[dl](\mtx,\mty){$m_2$}
+  \psline[]{-}(\mtx,\mty)(\mtx,\rty)
+  \uput[r](\mtx,\lrty){$r_2$}
+
+  % movement line
+  \psline[linestyle=dashed]{-}(\mvlsx,\mvlsy)(\mvltx,\mvlty)
+  \uput[u](\mvltx,\mvlty){movement line}
+
+  % vector v
+  \psline[arrowscale=2]{->}(\msx,\msy)(\vlen,\msy)
+  \uput[u](\vx,\msy){$\vec{v}$}
+
+  % momentum line
+  \psline[linestyle=dashed]{-}(\mmlsx,\mmlsy)(\mmltx,\mmlty)
+  \uput[ur](\mmltx,\mmlty){momentum line}
+
+  % vector d
+  \psline[arrowscale=2,linecolor=blue]{->}(\msx,\msy)(\mtx,\mty)
+  \uput[d](\dx,\dy){\textcolor{blue}{$\vec{d}$}}
+
+  % vector vm2
+  \psline[arrowscale=2,linecolor=red]{->}(\msx,\vmsy)(\vmtx,\vmty)
+  \uput[dl](\vmtx,\vmty){\textcolor{red}{$\vec{v_{m_2}}$}}
+
+  % vector s
+  \psline[arrowscale=2,linecolor=olive]{->}(\vlen,\msy)(\vmtx,\vmty)
+  \uput[dr](\sx,\sy){\textcolor{olive}{$\vec{s}$}}
+
+  % right angle
+  \psarc{-}(\vmtx,\vmty){15}{60}{140}
+  \pscircle*(\mxra,\myra){1}
+
+\end{pspicture}
+\captionof{figure}{collision}
+\label{fig:coll}
+\end{center}
+
+We need to calculate $\vec{v_{m_2}}$. We define $\vec{d}=\vec{m_2}-\vec{m_1}$, where $\vec{m_1}$ and $\vec{m_2}$ are the positional vectors for $m_1$ resp. $m_2$.
+We require that the masses have a positive expansion ($r_1>0$, $r_2>0$), thus $\vec{d} \neq \vec{0}$ (collision takes place if
+$|\vec{d}|=r_1+r_2$). Let $\vec{s}$ be a (the) vector with
+$\vec{v_{m_2}}=\vec{v}+\vec{s}$. Then $\vec{s}$ must be orthogonal to $\vec{v_{m_2}}$ and thus to $\vec{d}$. That is because $\vec{v_{m_2}}$ is a partial vector of $\vec{v}$
+and points in the same direction as $\vec{d}$ which resides on the momentum line. See figure \ref{fig:coll}.\\
+
+\pagebreak
+Be $\lambda \in \mathbb{R}$, then the following equations hold:
+
+\begin{equation}
+  \vec{v_{m_2}}=\vec{v}+\vec{s}=\lambda \vec{d}
+\label{eq:vs}
+\end{equation}
+\begin{equation}
+  \vec{s}\cdot\vec{d}=0
+  \label{eq:sd}
+\end{equation}
+
+This can easily be solved:
+
+\begin{align}
+(\ref{eq:vs}),(\ref{eq:sd})=> (\lambda \vec{d}-\vec{v})\vec{d}=0\\
+<=> \lambda\vec{d}^2-\vec{v}\vec{d}=0\\
+<=> \lambda=\frac{\vec{v}\vec{d}}{\vec{d}^2}
+\end{align}
+
+As a result we get:
+
+\begin{displaymath}
+  \vec{v_{m_2}}=\frac{\vec{v}\vec{d}}{\vec{d}^2}\vec{d}
+\end{displaymath}
+\\
+$\square$
+
+\newpage
+\section{physical line adjustment}
+Points $P1,P2$ with $\vec{d}:=\vec{P2}-\vec{P1}, l:=$ required length of line\\\\
+We obtain $P1',P2'$ with $|\vec{P2'}-\vec{P1'}|=l$ by calculating $\vec{P2'}=\vec{P2}-\vec{\Delta d}$ and $\vec{P1'}=\vec{P1}+\vec{\Delta d}$ with
+$|\vec{\Delta d}|=\frac{|\vec{d}|-l}{2}$:\\\\
+$\vec{\Delta d}=\frac{\vec{d}}{|\vec{d}|}*|\vec{\Delta d}|=\frac{|\vec{d}|-l}{2|\vec{d}|}\vec{d}$.
+
 \end{document}
