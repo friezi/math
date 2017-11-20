@@ -382,4 +382,16 @@ We obtain $P1',P2'$ with $|\vec{P2'}-\vec{P1'}|=l$ by calculating $\vec{P2'}=\ve
 $|\vec{\Delta d}|=\frac{|\vec{d}|-l}{2}$:\\\\
 $\vec{\Delta d}=\frac{\vec{d}}{|\vec{d}|}*|\vec{\Delta d}|=\frac{|\vec{d}|-l}{2|\vec{d}|}\vec{d}$.
 
+\newpage
+\section{n-dimensional polar coordinates}
+\subsection*{cartesian to polar}
+$(x_1,\dots,x_n) \rightarrow (r,\alpha_1,\dots,\alpha_{n-1})$\\
+\\
+$\alpha_1=\arctan_2(\frac{x_2}{x_1})$\\\\
+$\alpha_i=\arctan_2(\frac{x_{i+1}}{\sqrt{\sum_{j=1}^i{x_n^2}}})$
+\subsection*{polar to cartesion}
+$(r,\alpha_1,\dots,\alpha_{n-1}) \rightarrow (x_1,\dots,x_n)$\\
+\\
+$x_1=r\prod_{j=1}^{n_{\alpha}}{\cos\alpha_j}$\\
+$x_i=r\sin\alpha_{i-1}\prod_{j=i}^{n_{\alpha}}\cos\alpha_j \spc\spc \forall\spc 1<i<=n$
 \end{document}
