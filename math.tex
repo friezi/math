@@ -229,22 +229,22 @@ Cov(x,y):=\frac{1}{n}\sum_{i=1}^{n}(x_i-x_M)(y_i-y_M)
 Be $\vec{g}:\mathbb{Z}^n\rightarrow\mathbb{R}^m$\\\\
 We define $\vec{f}:\mathbb{R}^n\rightarrow\mathbb{R}^m$ as:\\\\
 \begin{align*}
-  \vec{f}(\vec{v}):=\sum_{p\in\mathcal{P}(S)}^{}\prod_{i=1}^{n}\left((1-d_{v_i})^{1-\delta_p(i)}d_{v_i}^{\delta_p(i)}\right)\vec{g}(\vec{v}_p)
+  \vec{f}(\vec{v}):=\sum_{p\in\mathcal{P}(S)}^{}\prod_{i=1}^{n}\left((1-d_{v_i})^{1-\xi_p(i)}d_{v_i}^{\xi_p(i)}\right)\vec{g}(\vec{v}_p)
 \end{align*}
 with
 \begin{align*}
-  S:=\{x\in\mathbb{N} \mid 1\leq x\leq n\},\quad p\in\mathcal{P}(S)\\\\
-  \delta_p:\mathbb{N}\rightarrow\{0,1\}\\
-  \delta_p(x):=
+  S:=\{x\in\mathbb{N} \mid 1\leq x\leq n\},\quad p\in\mathcal{P}(S)\\\\\\
+  \text{indicator function:}\\\xi_A:\mathbb{N}\rightarrow\{0,1\},\quad A \subseteq \mathbb{N}\\
+  \xi_A(x):=
   \begin{cases}
-    1&x\in p\\
-    0&x\not\in p
-  \end{cases}\\\\
+    1&x\in A\\
+    0&x\not\in A
+  \end{cases}\\\\\\
   \vec{v}_p:v_{p_i}:=
   \begin{cases}
     \lceil v_i\rceil&i\in p\\
     \lfloor v_i\rfloor&i\not\in p
-  \end{cases}\\\\
+  \end{cases}\\\\\\
   \vec{d}_{\vec{v}}:=\vec{v}-\vec{v}_{\emptyset}
 \end{align*}
 .
