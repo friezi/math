@@ -229,30 +229,36 @@ Cov(x,y):=\frac{1}{n}\sum_{i=1}^{n}(x_i-x_M)(y_i-y_M)
 Be $\vec{g}:\mathbb{Z}^n\rightarrow\mathbb{R}^m$\\\\
 We define $\vec{f}:\mathbb{R}^n\rightarrow\mathbb{R}^m$ as:\\\\
 \begin{align*}
-  \vec{f}(\vec{v}):=\sum_{p\in\mathcal{P}(S)}^{}\prod_{i=1}^{n}\left((1-d_{v_i})^{1-\xi_p(i)}d_{v_i}^{\xi_p(i)}\right)\vec{g}(\vec{v}_p)
+  \vec{f}(\vec{v}):=\sum_{p\in\mathcal{P}(S)}^{}\prod_{i=1}^{n}\left((1-\vec{\delta}(\vec{v})_i)^{1-\xi_p(i)}\vec{\delta}(\vec{v})_i^{\xi_p(i)}\right)\vec{g}(\vec{h}_p(\vec{v}))
 \end{align*}
 with
 \begin{align*}
   S:=\{x\in\mathbb{N} \mid 1\leq x\leq n\},\quad p\in\mathcal{P}(S)\\\\\\
-  \text{indicator function:}\\\xi_A:\mathbb{N}\rightarrow\{0,1\},\quad A \subseteq \mathbb{N}\\
+  \text{indicator function:}\\
+  \xi_A:\mathbb{N}\rightarrow\{0,1\},\quad A \subseteq \mathbb{N}\\
   \xi_A(x):=
   \begin{cases}
     1&x\in A\\
     0&x\not\in A
   \end{cases}\\\\\\
-  \vec{v}_p:v_{p_i}:=
+  \text{discretization function:}\\
+  \vec{h}_p:\mathbb{R}^n\rightarrow\mathbb{Z}^n\\
+  \vec{h}_p(\vec{v}):=\vec{h},\quad h_i:=
   \begin{cases}
     \lceil v_i\rceil&i\in p\\
     \lfloor v_i\rfloor&i\not\in p
   \end{cases}\\\\\\
-  \vec{d}_{\vec{v}}:=\vec{v}-\vec{v}_{\emptyset}
+  \text{delta function:}\\
+  \vec{\delta}:\mathbb{R}^n\rightarrow \{z\in\mathbb{R}\mid 0\leq z<1\}^n\\
+  \vec{\delta}(\vec{v}):=\vec{v}-\vec{h}_{\emptyset}(\vec{v})
 \end{align*}
 .
 \\\\\\
-Example: $n=2,\quad x,y\in\mathbb{Z},\quad d_x,d_y\in \{z\in\mathbb{R}\mid 0\leq z<1\}$\\\\
+Example: $n=2,\quad d_1:=\vec{\delta}(\vec{v})_1,d_2:=\vec{\delta}(\vec{v})_2$\\
 \begin{align*}
-  \vec{f}(\vec{v})=\vec{f}(\vec{v_{\emptyset}}+\vec{d}_{\vec{v}})=\vec{f}(\vecdd{\lfloor v_1\rfloor}{\lfloor v_2 \rfloor}+\vecdd{d_x}{d_y})\\
-  =(1-d_x)(1-d_y)\vec{g}(\vec{v}_{\emptyset})+(1-d_y)d_x\vec{g}(\vec{v}_{\{1\}})+(1-d_x)d_y\vec{g}(\vec{v}_{\{2\}})+d_xd_y\vec{g}(\vec{v}_{\{1,2\}})
+  \vec{f}(\vec{v})=\vec{f}(\vec{h_{\emptyset}}(\vec{v})+\vec{\delta}(\vec{v}))=\vec{f}(\vecdd{\lfloor v_1\rfloor}{\lfloor v_2 \rfloor}+\vecdd{d_1}{d_2})\\
+  =(1-d_1)(1-d_2)\vec{g}(\vec{h}_{\emptyset}(\vec{v}))+(1-d_2)d_1\vec{g}(\vec{h}_{\{1\}}(\vec{v}))+(1-d_1)d_2\vec{g}(\vec{h}_{\{2\}}(\vec{v}))
+  +d_1d_2\vec{g}(\vec{h}_{\{1,2\}}(\vec{v}))
 \end{align*}
 \newpage
 \section{partial velocity vector}
