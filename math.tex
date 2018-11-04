@@ -233,28 +233,30 @@ We define $\vec{f}:\mathbb{R}^n\rightarrow\mathbb{R}^m$ as:\\\\
 \end{align*}
 with
 \begin{align*}
-  S:=\{x\in\mathbb{N} \mid 1\leq x\leq n\},\quad p\in\mathcal{P}(S)\\\\\\
+  S:=\{x\in\mathbb{N} \mid 1\leq x\leq n\},\quad p\in\mathcal{P}(S)\\\\
   \text{indicator function:}\\
   \xi_A:\mathbb{N}\rightarrow\{0,1\},\quad A \subseteq \mathbb{N}\\
   \xi_A(x):=
   \begin{cases}
     1&x\in A\\
     0&x\not\in A
-  \end{cases}\\\\\\
+  \end{cases}\\\\
   \text{discretization function:}\\
   \vec{h}_p:\mathbb{R}^n\rightarrow\mathbb{Z}^n\\
-  \vec{h}_p(\vec{v}):=\vec{h},\quad h_i:=
+  \quad h_i:=
   \begin{cases}
     \lceil v_i\rceil&i\in p\\
     \lfloor v_i\rfloor&i\not\in p
-  \end{cases}\\\\\\
+  \end{cases}\\
+  \text{with}\quad \vec{h}:=\vec{h}_p(\vec{v})
+\\\\
   \text{delta function:}\\
   \vec{\delta}:\mathbb{R}^n\rightarrow \{z\in\mathbb{R}\mid 0\leq z<1\}^n\\
   \vec{\delta}(\vec{v}):=\vec{v}-\vec{h}_{\emptyset}(\vec{v})
 \end{align*}
 .
-\\\\\\
-Example: $n=2,\quad d_1:=\vec{\delta}(\vec{v})_1,d_2:=\vec{\delta}(\vec{v})_2$\\
+\\\\
+\uline{Example}: $n=2,\quad d_1:=\vec{\delta}(\vec{v})_1,d_2:=\vec{\delta}(\vec{v})_2$\\
 \begin{align*}
   \vec{f}(\vec{v})=\vec{f}(\vec{h_{\emptyset}}(\vec{v})+\vec{\delta}(\vec{v}))=\vec{f}(\vecdd{\lfloor v_1\rfloor}{\lfloor v_2 \rfloor}+\vecdd{d_1}{d_2})\\
   =(1-d_1)(1-d_2)\vec{g}(\vec{h}_{\emptyset}(\vec{v}))+(1-d_2)d_1\vec{g}(\vec{h}_{\{1\}}(\vec{v}))+(1-d_1)d_2\vec{g}(\vec{h}_{\{2\}}(\vec{v}))
