@@ -19,6 +19,8 @@
 
 \newcommand{\spc}{\hspace{0.2cm}}
 \newcommand*{\vecdd}[2]{\begin{pmatrix}#1\\#2\\\end{pmatrix}}
+\newcommand{\follows}{\Rightarrow}
+\newcommand{\contra}{\Rightarrow\Leftarrow}
 
 \begin{document}
 \tableofcontents
@@ -54,7 +56,7 @@ $=> \det\left(\begin{array}{ll}\vec{v_2}&\vec{v_1}\\\end{array}\right)=|\vec{v_1
 \\\\
 $=> \vec{v_1}$ and $\vec{v_2}$ are linear dependent and the determinant in general determines linear dependency.
 \newpage
-\section{Law of cosines}
+\section{Law of cosine}
 To proove: $c^2 = a^2+b^2-2ab\cos\gamma$
 \\\\\\
 $\gamma>=\frac{\pi}{2}:$
@@ -223,6 +225,30 @@ Cov(x,y):=\frac{1}{n}\sum_{i=1}^{n}(x_i-x_M)(y_i-y_M)
 \\\\
 =\uuline{\frac{1}{n}\sum_{i=1}^{n}x_iy_i-x_My_M}
 \end{align*}
+\newpage
+\section{Number theory - irrational roots}
+To proove: if a root of a natural number is not integer then it is irrational\\
+formal: $\forall x\in\mathbb{N}: (\sqrt{x}\not\in\mathbb{Z}) \follows (\not\exists a,b\in\mathbb{Z}: \frac{a}{b}=\sqrt{x})$
+\\\\
+assume $\exists a,b\in\mathbb{Z}:\frac{a}{b}=\sqrt{x},$ $a,b$ have no common divisors\\
+\begin{align*}
+  \follows \frac{a^2}{b^2}=x\\
+  \iff a^2=x*b^2=(x*b)*b\\\\
+  \text{be }\\
+  A=\{p_i|p_i \text{ is i-th of n primefactors of }a\}\\
+  X=\{p_j|p_j \text{ is j-th of m primefactors of }x\}\\
+  B=\{p_k|p_k \text{ is k-th of l primefactors of }b\}\\\\
+  \follows a=\prod_{p_i\in A}{p_i},\spc a^2=\prod_{p_i\in A}{p_i}^2,\spc x=\prod_{p_j\in X}{p_j},\spc b=\prod_{p_k\in B}{p_k}\\
+  \follows a^2=\prod_{p_j\in X}{p_j}*\prod_{p_k\in B}{p_k}^2=\prod_{p_i\in A}{p_i}^2\\\\
+  \text{since integer factorization is unique }\follows B\subseteq A\\ 
+\end{align*}\\
+\underline{case I:} $B=\emptyset$\\
+$\follows b=1\follows \sqrt{x}=a$ is integer
+\\\\
+\underline{case II:} $B\not=\emptyset$\\
+$\follows B$ is a set of common divisors of $a$ and $b\spc\contra$ to assumption
+\\\\
+$\square$
 \newpage
 \part{Computation}
 \section{linear interpolation of discrete vector field}
