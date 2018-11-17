@@ -428,4 +428,18 @@ $(r,\alpha_1,\dots,\alpha_{n-1}) \rightarrow (x_1,\dots,x_n)$\\
 \\
 $x_1=r\prod_{j=1}^{n_{\alpha}}{\cos\alpha_j}$\\
 $x_i=r\sin\alpha_{i-1}\prod_{j=i}^{n_{\alpha}}\cos\alpha_j \spc\spc \forall\spc 1<i<=n$
+
+\newpage
+\section{function transition}
+Be $f:\mathbb{C}^n\rightarrow\mathbb{C}^m$, $g:\mathbb{C}^n\rightarrow\mathbb{C}^m$, $t:\mathbb{C}^n\rightarrow[0,1]$ (transition function). We define:\\\\
+$m:\mathbb{C}^n\rightarrow\mathbb{C}^m$ with\\
+$m(x)=f(x)+t(x)(g(x)-f(x))$
+\\\\
+$m$ morphs $f$ to $g$ depending on $t$.\\\\\\
+Example application:\\\\
+projection of interval range $[smin,smax]$ to $[tmin,tmax]$\\
+$smin,smax,tmin,tmax\in\mathbb{R},\spc smax\not=smin$:\\\\
+$f(x)=tmin$\\
+$g(x)=tmax$\\
+$t(x)=\frac{x-smin}{smax-smin}$
 \end{document}
