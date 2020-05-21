@@ -442,4 +442,42 @@ $smin,smax,tmin,tmax\in\mathbb{R},\spc smax\not=smin$:\\\\
 $f(x)=tmin$\\
 $g(x)=tmax$\\
 $t(x)=\frac{x-smin}{smax-smin}$
+
+\newpage
+\section{3D-Math}
+\subsection{transformation by free axis}
+$v$: initial vector\\
+$v_n$: current transformed vector\\
+$v_{n+1}$: next transformed vector to be obtained\\
+$R_n$: current rotation matrix\\
+$R_A$: rotation matrix of axis $A$ to be applied\\
+$R_{n+1}$: next rotation matrix to be obtained\\
+$T_n$: current translation vector\\
+$T_t$: traslation vector to be applied\\
+$T_{n+1}$: next translation vector to be obtained\\
+$T_A$: translation vector of axis $A$ relative to origin\\
+\\
+$v_n=R_nv+T_n$\\
+$v_{n+1}=R_{n+1}v+T_{n+1}$\\\\
+translation of $v$ by $T_t$:\\
+$v_{n+1}=v_n+T_t$\\
+$=R_nv+T_n+T_t$\\
+$\Rightarrow R_{n+1}=R_n, \spc T_{n+1}=T_n+T_t$\\
+\\
+rotation of $v$ by axis $A$ with $R_A$:\\
+$v_{n+1}=R_A(v_n-T_A)+T_A$\\
+$=R_Av_n-R_AT_A+T_A$\\
+$=R_A(R_nv+T_n)-R_AT_A+T_A$\\
+$=R_AR_nv+R_AT_n-R_AT_A+T_A$\\
+$=R_AR_Nv+R_A(T_n-T_A)+T_A$\\
+$\Rightarrow R_{n+1}=R_AR_n, \spc T_{n+1}=R_A(T_n-T_A)+T_A$\\
+\\
+To do a rotation by axis A, A needs to be rotated to lay in one of the planes $P_{xy}$, $P_{xz}$ or $P_{yz}$, the actual rotation takes place in that plane
+resp. by the corresponding coordinate axis. Let's choose $z$ as the final coordinate axis (plane $P_{xy}$):\\
+$R_A=R_x^{-1}R_y^{-1}R_zR_yR_x$\\
+\\
+
+Starting point of the calculation is $v_0$ with $v_0=v$ by $R_0=E$, $T_0=\vec{0}$.
+
+
 \end{document}
